@@ -1,0 +1,99 @@
+
+body{
+  font-family: Helvetica;
+  background-color: #222222;
+  color: #F7F7F7;
+}
+
+#top{
+  text-align: center;
+  font-family: Raleway;
+}
+
+#caseheader, #deathheader{
+  text-align: center;
+  font-size: 36px;
+  border: 1px solid #F0F4F8;
+}
+
+#deltacases{
+  color:  rgb(11, 211, 11);
+  font-size: 18px;
+}
+#deltadeaths{
+  color: #FF5630;
+  font-size: 18px;
+}
+
+
+
+.chart{
+  display: block;
+  margin: auto;
+}
+
+#chartcontainer{
+  height: 400px;
+}
+
+.country {
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #102A43;
+}
+tr:nth-child(even) {
+  background-color: #243B53;
+}
+.name {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-size: 16px;
+  background-color: #486581;
+  color: #D9E2EC;
+  /* border-top: 1px solid #CFCFCF !important; */
+  border-top: 1px solid #F0F4F8;;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  /* border: 1px solid green; */
+
+}
+
+tbody{
+  display: table-row-group;
+}
+table{
+  /* display:table; */
+  border-collapse: separate;
+  /* table-layout: fixed; */
+  /* border: 1px solid #626262;; */
+  border: 1px solid #CFCFCF;
+  border-spacing: 0;
+ 
+}
+
+.percentcases{
+  color: rgb(11, 211, 11);
+}
+
+.percentdeaths{
+  color: #FF5630;
+}
+a {
+  text-decoration: none !important;
+  color: #F7F7F7;
+}
+a:hover
+{
+  color: #F7F7F7;
+  text-decoration: none;
+  cursor: default;
+}

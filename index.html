@@ -1,0 +1,137 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' href='./assets/img/icons8-america-48.png' type='image/x-icon' />
+  <title>COVID19 Insights</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/script.js"></script>
+</head>
+
+<body>
+
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell" ;">
+      </br />
+      <p style="text-align: center; font-size: 48px; font-family: Raleway;"">COVID-19 INSIGHTS</p>
+      
+
+      <p style=" text-align: center; font-size: 12px;">
+        </br />
+        Let me know if there's anything I can improve, and tell me what you would like to see next! <br />
+        Please feel free to reach out to me at rlw324@cornell.edu.</p>
+    </div>
+  </div>
+
+
+  <div class="grid-x grid-padding-x" id="top">
+    <div class="large-3 medium-1 small-0 cell"></div>
+    <div class="large-3 medium-5 cell" id="caseheader">
+
+    </div>
+    <div class="large-3 medium-5 cell" id="deathheader">
+
+    </div>
+    <div class=" large-3 medium-1 small-0 cell">
+    </div>
+
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <p style="text-align: center; font-size:12px;">Last Updated: April 1st, 2020</p>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <p style="text-align: center; font-size: 24px; font-family: Raleway;">Global</p>
+    </div>
+  </div>
+
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-3 small-0 cell"></div>
+    <div class="large-6 small-11 cell" id="chartcontainer">
+      <svg id="chart"></svg>
+    </div>
+    <div class="large-3 small-1 cell"></div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-2 cell"></div>
+    <div class="large-8 cell">
+
+      <table id="myTable">
+        <thead>
+          <tr class="headers">
+            <th class="name country">
+              <div class="nowrap">
+                <div class="header">COUNTRY</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">CASES</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">NEW</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">%CHANGE</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">PER 1M</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">DEATHS</div>
+              </div>
+            </th>
+            <th class="name" id="newdeaths">
+              <div class="nowrap">
+                <div class="header">NEW</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">%CHANGE</div>
+              </div>
+            </th>
+            <th class="name">
+              <div class="nowrap">
+                <div class="header">PER 1M</div>
+              </div>
+            </th>
+
+          </tr>
+        </thead>
+
+        <tbody id="tabledata">
+
+        </tbody>
+      </table>
+    </div>
+    <div class="large-2 cell"></div>
+  </div>
+
+
+
+
+</body>
+
+</html>
