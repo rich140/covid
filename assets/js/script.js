@@ -110,7 +110,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       var result = [];
       var len = arr.length;
 
-      //hardcoded
       for (let i = 0; i < 8; i++) {
         result.push(arr[i]);
       }
@@ -263,6 +262,9 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
 
     };
 
+    data[0] = consolidate(data[0]);
+    data[1] = consolidate(data[1]);
+
     data[0].forEach(d => {
       countries.push(d['Country/Region']);
 
@@ -273,7 +275,7 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       newcases.push(d[dates[dates.length - 1]] - d[dates[dates.length - 2]]);
       newcasesyesterday.push(d[dates[dates.length - 2]] - d[dates[dates.length - 3]]);
     });
-    // console.log(newcases);
+
     data[1].forEach(d => {
       totaldeaths += Number(d[dates[dates.length - 1]]);
       totalnewdeaths += Number(d[dates[dates.length - 1]] - d[dates[dates.length - 2]]);
@@ -332,7 +334,10 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     });
 
 
-
+    var abc = countries.slice(0);
+    console.log(abc)
+    var abcd = deaths.slice(0);
+    console.log(abcd)
 
     //set default ordering to highest --> lowest cases
 
@@ -649,7 +654,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     appendChildElement.innerHTML = ((totaldeaths / populations['World']) * 1000000).toFixed(0);
 
 
-    console.log(newcases)
     for (let i = 0; i < countries.length; i++) {
 
       parentElement = document.getElementById("tabledata");
