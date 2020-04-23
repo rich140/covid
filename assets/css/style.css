@@ -41,6 +41,9 @@ body{
   border-left: 1px solid #CFCFCF;
 }
 
+.casesper1m{
+  border-right: 1px solid #CFCFCF;
+}
 
 tr:nth-child(odd) {
   background-color: #102A43;

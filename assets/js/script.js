@@ -76,7 +76,8 @@ var populations = {
   "Seychelles": 98347, "Dominica": 71986, "Suriname": 586632, "Equatorial Guinea": 1402985, "Gabon": 2225734,
   "Maldives": 540544, "Bahamas": 393244, "Congo (Brazzaville)": 1696000, "Barbados": 287375, "El Salvador": 6486205,
   "Mali": 20250833, "Madagascar": 27691018, "Monaco": 39242, "Guyana": 786552, "Saint Lucia": 183627,
-  "Burma": 53370000
+  "Burma": 53370000, "South Sudan": 10980000, "Western Sahara": 500000, "Sao Tome and Principe": 211028,
+  "MS Zaandam": 1432, "Malawi": 18140000
 
 };
 
@@ -85,8 +86,6 @@ Promise.all([d3.csv("../assets/data/time_series_covid19_confirmed_global.csv"),
 d3.csv("../assets/data/time_series_covid19_deaths_global.csv"),
 d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
   .then(function (data) {
-    console.log(data);
-
 
     function removeDuplicates(array) {
       array.splice(0, array.length, ...(new Set(array)))
@@ -121,6 +120,7 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+      // Australia
       for (let i = 8; i < 16; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
@@ -136,6 +136,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // Canada
       for (let i = 35; i < 46; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
@@ -157,6 +159,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // China
       for (let i = 49; i < 82; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
@@ -172,6 +176,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // Denmark
       for (let i = 92; i < 95; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
@@ -188,10 +194,15 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // France
       for (let i = 107; i < 117; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
         }
+      }
+      for (let j = 0; j < dates.length; j++) {
+        temp[dates[j]] += Number(arr[259][dates[j]]);
       }
       result.push(temp);
 
@@ -203,10 +214,16 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // Netherlands
       for (let i = 166; i < 170; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
         }
+      }
+
+      for (let j = 0; j < dates.length; j++) {
+        temp[dates[j]] += Number(arr[256][dates[j]]);
       }
       result.push(temp);
 
@@ -219,6 +236,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       for (let i = 0; i < dates.length; i++) {
         temp[dates[i]] = Number(temp[dates[i]]);
       }
+
+      // United Kingdom
       for (let i = 217; i < 224; i++) {
         for (let j = 0; j < dates.length; j++) {
           temp[dates[j]] += Number(arr[i][dates[j]]);
@@ -229,23 +248,28 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
         temp[dates[j]] += Number(arr[249][dates[j]]);
         temp[dates[j]] += Number(arr[250][dates[j]]);
         temp[dates[j]] += Number(arr[251][dates[j]]);
+        temp[dates[j]] += Number(arr[258][dates[j]]);
       }
 
       result.push(temp);
 
       for (let i = 224; i < len; i++) {
-        if (i != 231 && i != 238 && i != 245 && i != 246 && i != 249 && i != 250 && i != 251) {
+        if (i != 231 && i != 238 && i != 245 && i != 246 && i != 249 && i != 250 && i != 251
+          && i != 256 && i != 258 && i != 259) {
           result.push(arr[i]);
         }
       }
       return result;
 
     };
-
+    abc = data[0].slice(0);
+    console.log(abc);
     data[0] = consolidate(data[0]);
-    data[1] = consolidate(data[1]);
-    //consolidate(data[2]);
 
+    abcd = data[0].slice(0);
+    console.log(abcd);
+    data[1] = consolidate(data[1]);
+    console.log(countries)
 
     data[0].forEach(d => {
       countries.push(d['Country/Region']);
@@ -284,6 +308,9 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       return res;
     }
 
+
+
+
     cases = strToNum(cases);
     newcases = strToNum(newcases);
     deaths = strToNum(deaths);
@@ -294,21 +321,20 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     newdeathsyesterday = strToNum(newdeathsyesterday);
 
 
+
+
     data[0].forEach(d => {
       for (let i = 0; i < dates.length; i++) {
-        //console.log(d[dates[i]]);
         d[dates[i]] = parseInt(d[dates[i]]);
       }
     });
     data[1].forEach(d => {
       for (let i = 0; i < dates.length; i++) {
-        //console.log(d[dates[i]]);
         d[dates[i]] = parseInt(d[dates[i]]);
       }
     });
     data[2].forEach(d => {
       for (let i = 0; i < dates.length; i++) {
-        //console.log(d[dates[i]]);
         d[dates[i]] = parseInt(d[dates[i]]);
       }
     });
@@ -353,7 +379,7 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     }
 
 
-    // Create cdata
+    // Initialize cdata
     for (let i = 0; i < dates.length; i++) {
       cdata.push({
         'Date': dates[i],
@@ -362,7 +388,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
 
       for (let j = 0; j < countries.length; j++) {
         cdata[i][countries[j]] = 0;
-        // console.log(cdata[i]);
       }
     }
 
@@ -380,6 +405,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       }
     }
 
+
+
     //create ddata
     for (let i = 0; i < dates.length; i++) {
       ddata.push({
@@ -389,14 +416,17 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
 
       for (let j = 0; j < countries.length; j++) {
         ddata[i][countries[j]] = 0;
-        // console.log(cdata[i]);
       }
     }
+
+
+
 
     data[1].forEach(d => {
 
       for (let i = 0; i < ddata.length; i++) {
         ddata[i][d['Country/Region']] = d[dates[i]];
+
       }
 
     });
@@ -407,8 +437,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       }
     }
 
-
-    console.log(countries);
     // Clean up
     for (let i = 0; i < cdata.length; i++) {
       cdata[i]['South Korea'] = cdata[i]['Korea, South'];
@@ -427,6 +455,8 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     countries[countries.indexOf('Korea, South')] = 'South Korea';
     countries[countries.indexOf('Taiwan*')] = 'Taiwan';
 
+
+
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
@@ -440,7 +470,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       newcasesyesterday[i] = numberWithCommas(newcasesyesterday[i]);
       newdeathsyesterday[i] = numberWithCommas(newdeathsyesterday[i]);
     }
-
 
     //recoveries dataset different
 
@@ -492,7 +521,7 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
 
 
 
-    //  World data first row of table
+    //  World data first row of table 
     parentElement = document.getElementById("tabledata");
     childElement = document.createElement('tr');
     appendChildElement = parentElement.appendChild(childElement);
@@ -556,16 +585,21 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     attribute.value = "percentcases";
     childElement.setAttributeNode(attribute);
     appendChildElement = parentElement.appendChild(childElement);
-    appendChildElement.innerHTML = "+" + (((totalnewcases - totalnewcasesyesterday) / totalnewdeathsyesterday) * 100).toFixed(2) + "%";
+    appendChildElement.innerHTML = "+" + ((totalnewcases / (totalcases - totalnewcases)) * 100).toFixed(2) + "%";
 
-    //per 1m 
+    // cases per 1m GLOBAL
     parentElement = parentElement.parentElement;
     childElement = document.createElement('td');
     appendChildElement = parentElement.appendChild(childElement);
     parentElement = childElement;
+    attribute = document.createAttribute("class");
+    attribute.value = "casesper1m";
+    childElement.setAttributeNode(attribute);
     childElement = document.createElement('div');
     appendChildElement = parentElement.appendChild(childElement);
     appendChildElement.innerHTML = ((totalcases / populations['World']) * 1000000).toFixed(0);
+
+
 
     //deaths 
     parentElement = parentElement.parentElement;
@@ -611,9 +645,9 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     attribute.value = "percentdeaths";
     childElement.setAttributeNode(attribute);
     appendChildElement = parentElement.appendChild(childElement);
-    appendChildElement.innerHTML = ("+") + (((totalnewdeaths - totalnewdeathsyesterday) / totalnewdeathsyesterday) * 100).toFixed(2) + "%";
+    appendChildElement.innerHTML = ("+") + ((totalnewdeaths / (totaldeaths - totalnewdeaths)) * 100).toFixed(2) + "%";
 
-    //per 1m
+    //deaths per 1m GLOBAL
     parentElement = parentElement.parentElement;
     childElement = document.createElement('td');
     appendChildElement = parentElement.appendChild(childElement);
@@ -623,7 +657,7 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     appendChildElement.innerHTML = ((totaldeaths / populations['World']) * 1000000).toFixed(0);
 
 
-
+    console.log(newcases)
     for (let i = 0; i < countries.length; i++) {
 
       parentElement = document.getElementById("tabledata");
@@ -693,11 +727,14 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       appendChildElement = parentElement.appendChild(childElement);
       appendChildElement.innerHTML = "+" + ((parseFloat(newcases[i].replace(/,/g, '')) / (parseFloat(cases[i].replace(/,/g, '')) - parseFloat(newcases[i].replace(/,/g, '')))) * 100).toFixed(2) + "%";
 
-
+      // cases per 1m
       parentElement = parentElement.parentElement;
       childElement = document.createElement('td');
       appendChildElement = parentElement.appendChild(childElement);
       parentElement = childElement;
+      attribute = document.createAttribute("class");
+      attribute.value = "casesper1m";
+      childElement.setAttributeNode(attribute);
       childElement = document.createElement('div');
       appendChildElement = parentElement.appendChild(childElement);
       appendChildElement.innerHTML = ((parseFloat(cases[i].replace(/,/g, '')) / populations[countries[i]]) * 1000000).toFixed(0);
@@ -768,8 +805,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
     document.getElementById('chart').setAttribute("height", document.getElementById("chart").parentElement.clientHeight);
     const width = svg.attr("width")
     const height = svg.attr("height")
-    console.log(width);
-    console.log(height);
     const margin = { top: 10, right: 10, bottom: 50, left: 50 };
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
@@ -957,7 +992,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       deathlabel.text(txt2);
 
       if (xPos < chartWidth / 4.0) {
-        console.log(valueMarker.attr('cy'));
         label.attr("x", xPos + 4).attr("y", valueMarker.attr('cy') - 15).attr("text-anchor", "start");
       }
       else {
