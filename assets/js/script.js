@@ -262,14 +262,6 @@ d3.csv("../assets/data/time_series_covid19_recovered_global.csv")])
       return result;
 
     };
-    abc = data[0].slice(0);
-    console.log(abc);
-    data[0] = consolidate(data[0]);
-
-    abcd = data[0].slice(0);
-    console.log(abcd);
-    data[1] = consolidate(data[1]);
-    console.log(countries)
 
     data[0].forEach(d => {
       countries.push(d['Country/Region']);
